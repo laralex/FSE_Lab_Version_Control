@@ -1,7 +1,18 @@
 from storage import Storage
 
-def test_add():
-    pass
+def test_add ():
+     key, val = 'key', 'val'
+     wrong_key = 'key1'
+     storage = Storage({'key1':'val1'})
+     storage.add(key, val)
+     get_value = storage.get(key)
+     get_value == val
+     assert get_value == val, 'Wtong value for key was added'
+     try:
+         storage.add(wrong_key, val)
+         get_value = storage.get(key)
+     except KeyError:
+         print('Such key already exists, try another one')
 
 def test_remove():
     pass
