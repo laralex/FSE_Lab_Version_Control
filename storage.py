@@ -11,9 +11,12 @@ class Storage:
             return self.data[key]
         else:
             return None
-
-    def remove(self):
-        pass
+ 
+    def remove(self, key):
+        from collections import Hashable
+        if not isinstance(key, Hashable):
+            return None # given key is a mutable object (thus cannot be a dict's key by Python rules)
+        return self.data.pop(key, None) # if key isn't found, returns default=None
 
     def set(self, key, value):
         if key in self.data:
