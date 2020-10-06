@@ -20,6 +20,9 @@ class Storage:
             self.data[key] = value
         else:
             raise KeyError(key)
-    
-    def add(self):
-        pass
+ 
+    def add(self, key, value):
+        if key not in self.data:
+            return self.data.update({key: value})
+        else: 
+            raise KeyError
